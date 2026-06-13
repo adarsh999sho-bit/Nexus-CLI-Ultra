@@ -1,0 +1,11 @@
+{
+  "id": "d8e5c4c5-261e-455e-a764-33a6010cbf0a",
+  "workflowId": "list-workflow",
+  "timestamp": "2026-06-13T08:08:50.392Z",
+  "completedTasks": [
+    "t1",
+    "t2"
+  ],
+  "taskResults": {},
+  "memory": {}
+}

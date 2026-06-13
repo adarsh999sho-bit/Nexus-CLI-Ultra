@@ -1,0 +1,61 @@
+{
+  "name": "nexus-cli-ultra",
+  "version": "0.1.0",
+  "description": "Open-source, multi-model AI engineering CLI with context engineering, autonomous multi-agent workflows, and free model support",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "bin": {
+    "nexus": "src/index.ts"
+  },
+  "scripts": {
+    "dev": "bun src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "typecheck": "bun x tsc --noEmit",
+    "lint": "bun x biome check src/",
+    "lint:fix": "bun x biome check --apply src/",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "prepublish": "bun run build"
+  },
+  "keywords": [
+    "ai",
+    "cli",
+    "coding-agent",
+    "llm",
+    "code-generation",
+    "context-engineering",
+    "open-source"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adarsh999sho-bit/Nexus-CLI-Ultra.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@clack/core": "^1.4.1",
+    "@clack/prompts": "^1.5.1",
+    "commander": "^15.0.0",
+    "ink": "^7.0.6",
+    "ink-text-input": "^6.0.0",
+    "react": "^19.2.7",
+    "zod": "3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.17",
+    "biome": "^0.3.3",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "typescript": "5"
+  }
+}

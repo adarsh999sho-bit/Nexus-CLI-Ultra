@@ -1,0 +1,28 @@
+[
+  {
+    "workflowId": "wf-1781337352070",
+    "agent": "workflow-engine",
+    "action": "workflow_start",
+    "input": {
+      "goal": "Review code quality"
+    },
+    "output": {
+      "workflowId": "wf-1781337352070"
+    },
+    "success": true,
+    "durationMs": 0,
+    "id": "20f695e9-9c6f-4c30-871e-156f4cffaf02",
+    "timestamp": "2026-06-13T07:55:52.071Z"
+  },
+  {
+    "workflowId": "wf-1781337352070",
+    "agent": "rollback",
+    "action": "snapshots_created",
+    "input": {},
+    "output": {},
+    "success": true,
+    "durationMs": 0,
+    "id": "f83f86ed-6f15-44a6-a05f-32ef41fb5eb5",
+    "timestamp": "2026-06-13T07:55:52.071Z"
+  }
+]

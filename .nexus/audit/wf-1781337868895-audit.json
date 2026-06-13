@@ -1,0 +1,28 @@
+[
+  {
+    "workflowId": "wf-1781337868895",
+    "agent": "workflow-engine",
+    "action": "workflow_start",
+    "input": {
+      "goal": "Simple task"
+    },
+    "output": {
+      "workflowId": "wf-1781337868895"
+    },
+    "success": true,
+    "durationMs": 0,
+    "id": "13931f89-d83a-4705-8a3d-9ea36bcc84ac",
+    "timestamp": "2026-06-13T08:04:28.895Z"
+  },
+  {
+    "workflowId": "wf-1781337868895",
+    "agent": "rollback",
+    "action": "snapshots_created",
+    "input": {},
+    "output": {},
+    "success": true,
+    "durationMs": 0,
+    "id": "e5adee5a-cf81-4098-a152-fe01ca8bdc74",
+    "timestamp": "2026-06-13T08:04:28.895Z"
+  }
+]

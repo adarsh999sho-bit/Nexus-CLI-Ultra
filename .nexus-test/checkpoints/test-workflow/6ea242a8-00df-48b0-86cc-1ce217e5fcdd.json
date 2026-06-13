@@ -1,0 +1,16 @@
+{
+  "id": "6ea242a8-00df-48b0-86cc-1ce217e5fcdd",
+  "workflowId": "test-workflow",
+  "timestamp": "2026-06-13T07:55:52.061Z",
+  "completedTasks": [
+    "task-1"
+  ],
+  "taskResults": {
+    "task-1": {
+      "success": true
+    }
+  },
+  "memory": {
+    "key": "value"
+  }
+}

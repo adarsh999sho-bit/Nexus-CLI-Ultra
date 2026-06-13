@@ -1,0 +1,67 @@
+name: Nexus CLI Ultra CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun x tsc --noEmit
+      - run: bun test
+      - run: bun x biome check src/
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun x biome check src/
+
+  publish:
+    name: Publish
+    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+      - name: Publish to npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build binaries
+        run: |
+          bun run build
+          bun build --compile src/index.ts --outfile dist/nexus-linux-x64 --target bun-linux-x64
+          bun build --compile src/index.ts --outfile dist/nexus-macos-x64 --target bun-darwin-x64
+          bun build --compile src/index.ts --outfile dist/nexus-windows-x64.exe --target bun-windows-x64
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-binaries
+          path: dist/nexus-*
